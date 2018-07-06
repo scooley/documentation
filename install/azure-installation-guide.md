@@ -1,24 +1,19 @@
 # Install Kata Containers on Azure
 
-Kata Containers on Azure use nested virtualization to provide identical an installation experience to Kata on your preferred distribution.  
+Kata Containers on Azure use nested virtualization to provide an identical installation experience to Kata on your preferred Linux distribution.  
 
-This guide outlines:
+This guide assumes you have an Azure account set up.  Instructions will use Azure CLI.  If you don't already have Azure CLI running locally, all commands are also available in Azure Cloud Shell.
+[Google Cloud SDK](https://cloud.google.com/sdk/downloads) [Google Cloud Shell](https://cloud.google.com/shell/) . 
 
-1. Getting started with Azure CLI (locally) or Azure Cloud Shell (browser based)
-1. Using Azure Cloud Shell to create a virtual machine that supports nested virtualization.
-1. Validate the virtual machine is available and does support nested virtualization.
+This guide was last validated in July of 2018.
 
-## Setup Azure
+## Check Azure Pre-Requisites
 
-This guide assumes an installed and configured instance of the [Google Cloud SDK](https://cloud.google.com/sdk/downloads). For a zero-configuration option, all of the commands below were been tested under [Google Cloud Shell](https://cloud.google.com/shell/) (as of Jun 2018). Verify your `gcloud` installation and configuration:
-
-```bash
-$ gcloud info || { echo "ERROR: no Google Cloud SDK"; exit 1; }
-```
+Verify your Azure CLI by running `az`.
 
 ## Create an Image with Nested Virtualization Enabled
 
-VM images on GCE are grouped into families under projects. Officially supported images are automatically discoverable with `gcloud compute images list`. That command produces a list similar to the following (likely with different image names):
+VM images on Azure are grouped into families under projects. Officially supported images are automatically discoverable with `gcloud compute images list`. That command produces a list similar to the following (likely with different image names):
 
     $ gcloud compute images list
     NAME                                                  PROJECT            FAMILY                            DEPRECATED  STATUS
